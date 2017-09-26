@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+     xmlns:aop="http://www.springframework.org/schema/aop"
+     xmlns:tx="http://www.springframework.org/schema/tx"
+     xmlns:jdbc="http://www.springframework.org/schema/jdbc"
+     xmlns:context="http://www.springframework.org/schema/context"
+     xsi:schemaLocation="
+     http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.3.xsd
+     http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.3.xsd
+     http://www.springframework.org/schema/jdbc http://www.springframework.org/schema/jdbc/spring-jdbc-4.3.xsd
+     http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-4.3.xsd
+     http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-4.3.xsd">
+
+
+	<bean id="dataSource" name="dataSource" class="com.mchange.v2.c3p0.ComboPooledDataSource">
+		<property name="driverClass" value="${jdbc.driverClassName}"/>
+		<property name="jdbcUrl" value="${jdbc.url}"/>
+		<property name="user" value="${jdbc.username}"/>
+		<property name="password" value="${jdbc.password}"/>
+		<property name="maxPoolSize" value="${jdbc.maxPoolSize}"/>
+		<property name="minPoolSize" value="${jdbc.minPoolSize}"/>
+		<property name="initialPoolSize" value="${jdbc.initialPoolSize}"/>
+		<property name="maxIdleTime" value="${jdbc.maxIdleTime}"/>
+		<property name="acquireIncrement" value="${jdbc.acquireIncrement}"/>
+		<property name="maxStatements" value="${jdbc.maxStatements}"/>
+		<property name="idleConnectionTestPeriod" value="${jdbc.idleConnectionTestPeriod}"/>
+	</bean>
+	
+	<bean id="managerTransactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+		<property name="dataSource" ref="dataSource"/>
+	</bean>
+	
+	<tx:advice id="managerAdvice" transaction-manager="managerTransactionManager">
+		<tx:attributes>
+			<tx:method name="*" propagation="REQUIRED" rollback-for="java.lang.Exception" /> 
+		</tx:attributes>
+	</tx:advice>
+	<aop:config>
+		<aop:pointcut id="interceptorPointCuts" expression="execution(* com.provider.serviceimpl..*.*(..))" />
+		<aop:advisor advice-ref="managerAdvice" pointcut-ref="interceptorPointCuts" />
+	</aop:config>
+	<!-- 
+    <tx:annotation-driven transaction-manager="managerTransactionManager" proxy-target-class="true"/>
+ -->
+    <bean id="managerSqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
+        <property name="dataSource" ref="dataSource" />
+		<property name="configLocation" value="classpath:conf/mybatis-config.xml" />
+		<property name="mapperLocations" value="classpath:mapping/*.xml" />
+    </bean>
+    
+    <bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
+		<property name="basePackage" value="com.provider.mapping" />
+		<property name="sqlSessionFactoryBeanName" value="managerSqlSessionFactory" />
+	</bean>
+	
+</beans>

@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.provider.mapping.UserMapper">
+
+	<!-- 查询条件   -->
+	<!--<sql id="queryDynSql">
+		<if test="trainnewsModel.id != null and trainnewsModel.id != ''"><![CDATA[ and r.id = #{trainnewsModel.id}]]></if>
+		<if test="trainnewsModel.title != null and trainnewsModel.title != ''"><![CDATA[ and r.title LIKE CONCAT(CONCAT('%', #{trainnewsModel.title}),'%') ]]></if>
+	</sql>-->
+	
+	<!-- 查询单个根据id -->
+	<select id="getUserList" parameterType="Map" resultType="userModel">
+		<![CDATA[
+			SELECT id,user_name userName,user_no userNo FROM tb_user
+		]]>
+
+	</select>
+
+</mapper>
