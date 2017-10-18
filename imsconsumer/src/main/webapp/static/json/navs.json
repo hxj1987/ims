@@ -6,7 +6,12 @@
 },{
 	"title" : "文章列表",
 	"icon" : "icon-text",
-	"href" : "page/news/newsList.html",
+	"href" : "/news/newsList.do",
+	"spread" : false
+},{
+	"title" : "用户信息",
+	"icon" : "icon-text",
+	"href" : "/user/toUserPage.do",
 	"spread" : false
 },{
 	"title" : "友情链接",

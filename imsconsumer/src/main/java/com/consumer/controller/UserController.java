@@ -23,7 +23,11 @@ public class UserController extends BaseController {
         System.out.println("this is test page!");
         return "test";
     }
-
+    @RequestMapping("/toUserPage")
+    public String toUserPage(){
+        System.out.println("this is test page!");
+        return "user/userList";
+    }
     @RequestMapping("/getUserList")
     @ResponseBody
     public void getUserList(HttpServletResponse response){
