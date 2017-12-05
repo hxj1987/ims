@@ -1,5 +1,6 @@
 package com.consumer.controller;
 
+import com.alibaba.dubbo.config.annotation.Reference;
 import com.api.model.UserModel;
 import com.api.services.IUserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,6 +16,7 @@ import java.util.*;
 @RequestMapping("user")
 public class UserController extends BaseController {
 
+    //@Reference(version = "1.0.0")
     @Autowired
     private IUserService iUserService;
 

@@ -15,6 +15,9 @@
     <param-name>contextConfigLocation</param-name>
     <param-value>classpath:conf/applicationContext.xml</param-value>
   </context-param>
+  <!--<listener>-->
+    <!--<listener-class>com.alibaba.dubbo.remoting.http.servlet.BootstrapListener</listener-class>-->
+  <!--</listener>-->
   <listener>
     <listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
   </listener>

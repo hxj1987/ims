@@ -11,5 +11,11 @@
 
     <artifactId>ims-api</artifactId>
     <packaging>jar</packaging>
-
+    <dependencies>
+        <dependency>
+            <groupId>com.ims</groupId>
+            <artifactId>ims-common</artifactId>
+            <version>1.0-SNAPSHOT</version>
+        </dependency>
+    </dependencies>
 </project>
