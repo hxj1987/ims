@@ -8,7 +8,7 @@
 	http://code.alibabatech.com/schema/dubbo http://code.alibabatech.com/schema/dubbo/dubbo.xsd">
 
 	<!-- 提供方应用信息，用于计算依赖关系 -->
-	<dubbo:application name="smartbpm_provider" owner="programmer" organization="dubbox"/>
+	<dubbo:application name="ims_provider" owner="programmer" organization="dubbox"/>
 	
 	<!-- 使用zookeeper注册中心暴露服务地址 -->
 	<dubbo:registry protocol="zookeeper" address="${dubbo.address}"/>

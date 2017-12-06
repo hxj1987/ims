@@ -31,17 +31,17 @@
 		<property name="dataSource" ref="dataSource"/>
 	</bean>
 	
-	<!--<tx:advice id="managerAdvice" transaction-manager="managerTransactionManager">-->
-		<!--<tx:attributes>-->
-			<!--<tx:method name="*" propagation="REQUIRED" rollback-for="java.lang.Exception" /> -->
-		<!--</tx:attributes>-->
-	<!--</tx:advice>-->
-	<!--<aop:config>-->
-		<!--<aop:pointcut id="interceptorPointCuts" expression="execution(* com.provider.serviceimpl..*.*(..))" />-->
-		<!--<aop:advisor advice-ref="managerAdvice" pointcut-ref="interceptorPointCuts" />-->
-	<!--</aop:config>-->
+	<tx:advice id="managerAdvice" transaction-manager="managerTransactionManager">
+		<tx:attributes>
+			<tx:method name="*" propagation="REQUIRED" rollback-for="java.lang.Exception" />
+		</tx:attributes>
+	</tx:advice>
+	<aop:config>
+		<aop:pointcut id="interceptorPointCuts" expression="execution(* com.provider.serviceimpl..*.*(..))" />
+		<aop:advisor advice-ref="managerAdvice" pointcut-ref="interceptorPointCuts" />
+	</aop:config>
 
-    <tx:annotation-driven transaction-manager="managerTransactionManager" proxy-target-class="true"/>
+    <!--<tx:annotation-driven transaction-manager="managerTransactionManager" proxy-target-class="true"/>-->
 
     <bean id="managerSqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
         <property name="dataSource" ref="dataSource" />

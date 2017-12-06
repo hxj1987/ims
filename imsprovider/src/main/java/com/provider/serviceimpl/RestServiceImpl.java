@@ -8,13 +8,9 @@ import org.apache.commons.lang.StringUtils;
 import org.codehaus.jackson.map.ObjectMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 
-import javax.ws.rs.Consumes;
-import javax.ws.rs.Produces;
-import javax.ws.rs.QueryParam;
 import java.io.IOException;
 import java.util.List;
 import java.util.Map;
-
 @Service(interfaceClass = IRestService.class,protocol = {"dubbo","rest"},version = "1.0.0")
 public class RestServiceImpl implements IRestService {
 
@@ -30,9 +26,8 @@ public class RestServiceImpl implements IRestService {
             } catch (IOException e) {
                 e.printStackTrace();
             }
+            System.out.println(maps.toString());
         }
-
-        //System.out.println(maps.toString());
         System.out.println("========"+iUserDao.getUserList(maps));
         return iUserDao.getUserList(maps);
     }

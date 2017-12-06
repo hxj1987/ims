@@ -22,6 +22,6 @@
 	<dubbo:annotation/>
 	<!-- 系统设置 -->
 
-	<dubbo:reference id="iUserService" interface="com.api.services.IUserService" version="1.0.0" registry="smartbpm"/>
+	<!--<dubbo:reference id="iUserService" interface="com.api.services.IUserService" version="1.0.0" registry="smartbpm"/>-->
 
 </beans>

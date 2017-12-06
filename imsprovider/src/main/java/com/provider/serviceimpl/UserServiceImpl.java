@@ -5,8 +5,6 @@ import com.api.model.UserModel;
 import com.api.services.IUserService;
 import com.provider.dao.IUserDao;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.transaction.annotation.Transactional;
-
 import java.util.List;
 import java.util.Map;
 @Service(interfaceClass = IUserService.class,protocol = {"dubbo"},version = "1.0.0")

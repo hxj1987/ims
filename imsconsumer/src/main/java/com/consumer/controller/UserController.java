@@ -16,8 +16,7 @@ import java.util.*;
 @RequestMapping("user")
 public class UserController extends BaseController {
 
-    //@Reference(version = "1.0.0")
-    @Autowired
+    @Reference(version = "1.0.0")
     private IUserService iUserService;
 
     @RequestMapping("/toTestPage")

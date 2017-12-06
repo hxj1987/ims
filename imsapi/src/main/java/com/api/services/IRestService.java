@@ -13,5 +13,5 @@ public interface IRestService {
 
     @GET
     @Path("/getUserList4Rest")
-    public List<UserModel> getUserList4Rest(String data);
+    public List<UserModel> getUserList4Rest(@QueryParam("data") String data);
 }
